@@ -7,14 +7,6 @@ const messages = [
 ];
 
 export default function App() {
-  return (
-    <div>
-      <Steps />
-    </div>
-  );
-}
-
-function Steps() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
 
@@ -28,8 +20,7 @@ function Steps() {
   }
 
   return (
-    // style={{ position: 'relative', height: '233px' }}
-    <div>
+    <>
       <button className='close' onClick={() => setIsOpen((v) => !v)}>
         &times;
       </button>
@@ -44,32 +35,21 @@ function Steps() {
             Step {step}: {messages[step - 1]}
           </p>
           <div className='buttons'>
-            <Button
-              textColor='#fff'
-              bgColor='#7950f2'
+            <button
+              style={{ backgroundColor: '#7950f2', color: '#fff' }}
               onClick={handlePrevious}
-              content='previous'
-            />
-            <Button
-              textColor='#fff'
-              bgColor='#7950f2'
+            >
+              previous
+            </button>
+            <button
               onClick={handleNext}
-              content='next'
-            />
+              style={{ backgroundColor: '#7950f2', color: '#fff' }}
+            >
+              next
+            </button>
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-function Button({ textColor, bgColor, onClick, content }) {
-  return (
-    <button
-      style={{ backgroundColor: `${bgColor}`, color: `${textColor}` }}
-      onClick={onClick}
-    >
-      {content}
-    </button>
+    </>
   );
 }
